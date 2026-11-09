@@ -1,88 +1,900 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6fbff">
-  <title>مختبر الألوان — تعلّم باللعب</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#edf7ff" />
+  <title>مختبر الكيمياء | تعلم باللعب</title>
   <style>
-    :root{--ink:#18324b;--muted:#6d8294;--blue:#3977e8;--cyan:#51c9d5;--pink:#ff789b;--yellow:#ffc857;--green:#57c69a;--paper:#fff;--line:#e6eef4;--shadow:0 16px 40px #24466a14}
-    *{box-sizing:border-box}body{margin:0;background:#f5f9fc;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;min-height:100vh;background-image:radial-gradient(#d8e8f4 1px,transparent 1px);background-size:22px 22px}
-    button{font:inherit;color:inherit}.app{max-width:1180px;margin:auto;padding:20px 24px 36px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px}.brand-icon{width:48px;height:48px;border-radius:16px;background:linear-gradient(145deg,#65d8d0,#4990ee);display:grid;place-items:center;font-size:26px;box-shadow:0 8px 18px #4990ee35}.brand h1{font-size:20px;margin:0}.brand p{font-size:12px;color:var(--muted);margin:3px 0 0}.top-actions{display:flex;align-items:center;gap:10px}.score{background:white;border:1px solid var(--line);border-radius:14px;padding:9px 13px;font-weight:800;box-shadow:0 4px 12px #24466a08}.score span{color:#e6a51a}.icon-btn{border:1px solid var(--line);background:white;border-radius:13px;width:42px;height:42px;cursor:pointer;font-size:18px}.layout{display:grid;grid-template-columns:270px minmax(330px,1fr) 265px;gap:16px;align-items:start}.panel,.bench{background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}.panel{padding:18px}.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.panel-title h2{font-size:15px;margin:0}.eyebrow{font-size:10px;color:var(--muted);letter-spacing:.04em}.mission{background:linear-gradient(145deg,#f1f7ff,#f7f4ff);border:1px solid #e8edfb;border-radius:17px;padding:14px;margin-bottom:17px}.mission-tag{font-size:10px;color:#5275c7;font-weight:800}.mission h3{margin:6px 0;font-size:15px}.mission p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}.mission-progress{height:6px;border-radius:9px;background:#dce7f6;margin-top:12px;overflow:hidden}.mission-progress i{display:block;width:0;height:100%;background:linear-gradient(90deg,#4d90f3,#66cfcb);transition:width .4s}.samples{display:grid;gap:8px}.sample{border:1px solid var(--line);border-radius:14px;background:white;padding:10px;display:flex;align-items:center;gap:10px;text-align:right;cursor:pointer;transition:.18s;width:100%}.sample:hover{transform:translateY(-2px);border-color:#bdd5ec;box-shadow:0 6px 15px #24466a0c}.sample.selected{border-color:var(--blue);background:#f4f8ff;box-shadow:0 0 0 2px #3977e81c}.sample:disabled{opacity:.42;cursor:not-allowed;transform:none}.sample-icon{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:19px;flex:none}.sample-name{font-weight:750;font-size:12px}.sample-desc{font-size:10px;color:var(--muted);margin-top:3px}.sample-count{margin-inline-start:auto;color:#8da0af;font-size:10px;white-space:nowrap}.bench{min-height:570px;overflow:hidden;position:relative;background:linear-gradient(180deg,#fff 0%,#fbfdff 72%,#f0f7fb 72%,#f0f7fb 100%)}.bench-head{padding:19px 21px 0;display:flex;align-items:center;justify-content:space-between}.bench-head h2{font-size:16px;margin:0}.bench-head p{font-size:11px;color:var(--muted);margin:4px 0 0}.status{border-radius:20px;padding:6px 10px;background:#eef9f4;color:#29926c;font-size:10px;font-weight:750}.stage{height:345px;display:flex;align-items:center;justify-content:center;position:relative}.sparkle{position:absolute;color:#b9d1e8;font-size:19px;animation:float 3s ease-in-out infinite}.sparkle.s1{top:48px;right:19%}.sparkle.s2{top:110px;left:18%;animation-delay:1s}.sparkle.s3{bottom:42px;right:27%;animation-delay:1.5s}@keyframes float{50%{transform:translateY(-8px) rotate(12deg)}}.beaker-wrap{position:relative;width:210px;height:245px;display:flex;justify-content:center;align-items:flex-end;filter:drop-shadow(0 13px 10px #2b547018)}.beaker{position:relative;width:170px;height:210px;border:5px solid #b9d4e4;border-top:0;border-radius:5px 5px 34px 34px;clip-path:polygon(5% 0,95% 0,88% 100%,12% 100%);background:linear-gradient(90deg,#ffffffad,#ffffff25 35%,#dff4ff55 72%,#fff9);overflow:hidden}.beaker:before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:#b9d4e4;border-radius:8px}.liquid{position:absolute;bottom:0;left:0;right:0;height:0%;background:linear-gradient(90deg,#70d7d1b8,#52b7eeb5);transition:height .5s,background .5s;border-radius:35% 35% 0 0}.liquid:after{content:"";position:absolute;left:10%;right:10%;top:7px;height:3px;border-radius:50%;background:#ffffff80}.measurement{position:absolute;right:18px;top:50px;z-index:2;display:grid;gap:25px;color:#9bb7c8;font-size:10px}.beaker-label{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:#7191a4;font-size:11px;font-weight:700;z-index:2}.beaker-neck{position:absolute;top:8px;width:164px;height:12px;border:4px solid #b9d4e4;border-radius:5px;background:#ffffffa8}.bubble{position:absolute;bottom:16%;width:7px;height:7px;border-radius:50%;background:#ffffffc9;animation:bubble 2.8s infinite ease-in}@keyframes bubble{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-100px);opacity:0}}.bubble.b2{left:58%;animation-delay:.9s}.bubble.b3{left:38%;animation-delay:1.6s}.bench-controls{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:-3px}.action{border:0;border-radius:12px;padding:10px 16px;font-weight:800;font-size:12px;cursor:pointer;transition:.18s}.action:hover{transform:translateY(-2px)}.action.primary{background:var(--blue);color:white;box-shadow:0 6px 15px #3977e83c}.action.secondary{background:#edf4f8;color:#496477}.action:disabled{opacity:.45;cursor:not-allowed;transform:none}.lab-message{min-height:42px;text-align:center;color:#708799;font-size:11px;padding:13px 18px 0}.lab-message strong{color:#3171d5}.bench-foot{position:absolute;bottom:0;left:0;right:0;height:54px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;color:#8097a8;font-size:10px}.ph-box{display:flex;align-items:center;gap:8px}.ph-track{height:8px;width:82px;border-radius:10px;background:linear-gradient(90deg,#f37889,#f8c56d,#62cba2,#62a5eb);position:relative}.ph-dot{position:absolute;top:50%;right:50%;width:13px;height:13px;border:2px solid white;box-shadow:0 1px 5px #354a5c66;border-radius:50%;background:#344c61;transform:translate(50%,-50%);transition:right .35s}.log-list{display:grid;gap:8px;max-height:210px;overflow:auto}.log-item{font-size:11px;color:#637c8e;background:#f7fafc;border-radius:11px;padding:9px 10px;line-height:1.45}.log-item b{color:#34556d}.empty-log{text-align:center;color:#9aabba;font-size:11px;padding:18px 4px}.hint{background:#fff8e9;border:1px solid #f5ebcc;border-radius:14px;padding:12px;margin-top:14px;color:#826a35;font-size:11px;line-height:1.7}.hint b{display:block;margin-bottom:3px}.reset-small{border:0;background:none;color:#8499a8;font-size:10px;cursor:pointer;text-decoration:underline;padding:4px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:#18324b;color:white;padding:11px 17px;border-radius:12px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:4;box-shadow:0 8px 24px #102f4b35}.toast.show{opacity:1;transform:translate(-50%,0)}.confetti{font-size:30px;animation:pop .5s ease}@keyframes pop{50%{transform:scale(1.35) rotate(12deg)}}
-    @media(max-width:900px){.layout{grid-template-columns:1fr 1fr}.bench{grid-column:1/-1;grid-row:1;min-height:540px}.panel.left{grid-column:1}.panel.right{grid-column:2}.stage{height:320px}}
-    @media(max-width:560px){.app{padding:14px 12px 24px}.brand h1{font-size:17px}.brand-icon{width:42px;height:42px}.layout{grid-template-columns:1fr;gap:12px}.bench{grid-column:1;grid-row:1;min-height:510px}.panel.left,.panel.right{grid-column:1}.stage{height:300px}.panel.left{grid-row:2}.panel.right{grid-row:3}.samples{grid-template-columns:1fr 1fr}.sample{padding:8px;gap:7px}.sample-icon{width:31px;height:31px}.sample-count{display:none}.bench-foot{padding:0 12px}.ph-track{width:62px}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+    :root {
+      --bg: #f4f9ff;
+      --panel: #ffffff;
+      --panel-2: #eef6ff;
+      --line: #dbeaf7;
+      --ink: #1d2d3d;
+      --muted: #69839c;
+      --primary: #4285f4;
+      --primary-soft: #e7f0ff;
+      --success: #29b67a;
+      --warning: #ffb341;
+      --danger: #ff6b7a;
+      --purple: #9a6efe;
+      --shadow: 0 18px 40px rgba(42, 73, 109, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(83, 169, 255, 0.09), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(89, 222, 196, 0.08), transparent 30%),
+        var(--bg);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
+    }
+
+    button { font: inherit; }
+
+    .app {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 22px 18px 34px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #5bc8ea, #4d79f5, #8e74ff);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      box-shadow: 0 16px 26px rgba(96, 120, 238, 0.28);
+    }
+
+    .title-wrap h1 {
+      margin: 0;
+      font-size: clamp(1.3rem, 2.3vw, 2rem);
+    }
+
+    .title-wrap p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .stats {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .stat-pill {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 8px 12px;
+      box-shadow: 0 6px 16px rgba(50, 82, 118, 0.06);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .stat-pill .value {
+      color: var(--primary);
+      margin-right: 4px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px minmax(340px, 1fr) 290px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-section {
+      padding: 18px 18px 16px;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 12px;
+    }
+
+    .panel-header h2 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .chip {
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .challenge-box {
+      background: linear-gradient(135deg, #edf5ff, #f1f2ff);
+      border: 1px solid #dfeafc;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .challenge-box .kicker {
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: 0.06em;
+    }
+
+    .challenge-box h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .challenge-box p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 12px;
+    }
+
+    .progress-track {
+      height: 8px;
+      background: #dfeaf7;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #4d8ff8, #5ed9d1);
+      transition: width 0.35s ease;
+    }
+
+    .element-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .element-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 16px;
+      padding: 12px 10px;
+      text-align: right;
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      color: var(--ink);
+      min-height: 94px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .element-btn:hover {
+      transform: translateY(-1px);
+      border-color: #c8dff7;
+      box-shadow: 0 8px 16px rgba(57, 104, 170, 0.06);
+    }
+
+    .element-btn.selected {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+      box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.08);
+    }
+
+    .element-btn:disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .element-symbol {
+      position: absolute;
+      inset: 12px auto auto 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 1.1rem;
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+
+    .element-name {
+      display: block;
+      font-weight: 800;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .element-desc {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    .lab-panel {
+      background: linear-gradient(180deg, #ffffff 0%, #f5fbff 55%, #edf7ff 100%);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .lab-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 20px 10px;
+    }
+
+    .lab-top h2 {
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    .status-tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 10px;
+      background: #ebf7f1;
+      color: var(--success);
+    }
+
+    .stage {
+      position: relative;
+      height: 330px;
+      display: grid;
+      place-items: center;
+      padding: 10px 16px 8px;
+    }
+
+    .spark {
+      position: absolute;
+      font-size: 21px;
+      color: rgba(101, 155, 215, 0.5);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .spark:nth-child(1) { top: 40px; left: 20%; }
+    .spark:nth-child(2) { top: 85px; right: 22%; animation-delay: 1s; }
+    .spark:nth-child(3) { bottom: 38px; left: 30%; animation-delay: 1.3s; }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(9deg); }
+    }
+
+    .beaker-wrap {
+      position: relative;
+      width: 240px;
+      height: 260px;
+      display: grid;
+      place-items: end center;
+      filter: drop-shadow(0 14px 18px rgba(59, 78, 99, 0.12));
+    }
+
+    .beaker {
+      position: relative;
+      width: 170px;
+      height: 198px;
+      border: 6px solid #b9d8ef;
+      border-top: 0;
+      border-radius: 0 0 32px 32px;
+      background: rgba(255,255,255,0.3);
+      overflow: hidden;
+      clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%);
+    }
+
+    .beaker::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      top: 0;
+      height: 12px;
+      background: #bfe0f5;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .beaker-neck {
+      position: absolute;
+      width: 70px;
+      height: 18px;
+      background: #d8ebfb;
+      border: 5px solid #b9d8ef;
+      border-radius: 8px 8px 0 0;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .liquid {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 0%;
+      background: linear-gradient(90deg, rgba(111,211,205,0.8), rgba(98,161,244,0.8));
+      transition: height 0.4s ease, background 0.35s ease;
+      border-radius: 18px 18px 0 0;
+    }
+
+    .liquid::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 12%;
+      right: 12%;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .bubble {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.7);
+      bottom: 12%;
+      animation: rise 2.5s infinite ease-in;
+      opacity: 0;
+    }
+
+    .bubble:nth-child(2) { left: 38%; animation-delay: 0.3s; }
+    .bubble:nth-child(3) { left: 56%; animation-delay: 1.1s; }
+    .bubble:nth-child(4) { left: 46%; animation-delay: 1.8s; }
+
+    @keyframes rise {
+      0% { opacity: 0; transform: translateY(0); }
+      20% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-90px); }
+    }
+
+    .beaker-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 12px;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 12px;
+      z-index: 3;
+    }
+
+    .control-stack {
+      padding: 0 18px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .action {
+      border: 0;
+      border-radius: 12px;
+      padding: 11px 16px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: transform 0.18s ease, opacity 0.2s ease;
+    }
+
+    .action:hover { transform: translateY(-1px); }
+    .action:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+    .action.primary {
+      background: linear-gradient(135deg, var(--primary), #5e8efc);
+      color: white;
+      box-shadow: 0 10px 20px rgba(66, 133, 244, 0.22);
+    }
+
+    .action.secondary {
+      background: #ebf2fb;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .lab-output {
+      padding: 0 20px 18px;
+      text-align: center;
+      min-height: 70px;
+    }
+
+    .lab-output .message {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .lab-output .message strong {
+      color: var(--primary);
+    }
+
+    .right-panel {
+      display: grid;
+      gap: 14px;
+    }
+
+    .info-box {
+      padding: 14px 14px 12px;
+    }
+
+    .info-box h3 {
+      margin: 0 0 10px;
+      font-size: 0.95rem;
+    }
+
+    .fact {
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 11px;
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .fact strong {
+      color: var(--ink);
+    }
+
+    .quiz {
+      margin-top: 10px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .quiz-btn {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px 12px;
+      text-align: right;
+      cursor: pointer;
+      font-size: 12px;
+      color: var(--ink);
+      transition: background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .quiz-btn:hover {
+      border-color: #c7daf6;
+      background: #f8fbff;
+    }
+
+    .quiz-btn.correct {
+      background: #eafaf3;
+      border-color: #bbebcf;
+      color: #0f7a4c;
+      font-weight: 800;
+    }
+
+    .quiz-btn.wrong {
+      background: #fff1f3;
+      border-color: #f3c4cd;
+      color: #b02941;
+      font-weight: 800;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      transform: translate(-50%, 18px);
+      background: rgba(21, 35, 52, 0.96);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.24s ease;
+      z-index: 100;
+      box-shadow: 0 12px 28px rgba(18, 31, 41, 0.2);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .app { padding: 14px 12px 26px; }
+      .topbar { align-items: flex-start; }
+      .element-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stats { width: 100%; }
+      .stat-pill { flex: 1 1 auto; text-align: center; }
+    }
   </style>
 </head>
 <body>
   <main class="app">
     <header class="topbar">
-      <div class="brand"><div class="brand-icon" aria-hidden="true">🧪</div><div><h1>مختبر الألوان</h1><p>اكتشف العلوم… تجربةً بعد تجربة!</p></div></div>
-      <div class="top-actions"><div class="score" aria-live="polite">⭐ <span id="score">0</span></div><button class="icon-btn" id="soundBtn" aria-label="تشغيل أو إيقاف الصوت" title="الصوت">🔔</button></div>
-    </header>
-    <div class="layout">
-      <aside class="panel left" aria-label="المهمة والعينات">
-        <section class="mission"><div class="mission-tag">🎯 تحدّي المختبر</div><h3 id="missionTitle">اصنع لوناً بنفسجياً</h3><p id="missionText">اختر العينة الحمراء والزرقاء، ثم اضغط «امزج» لتكتشف لوناً جديداً.</p><div class="mission-progress" aria-label="تقدم المهمة"><i id="progress"></i></div></section>
-        <div class="panel-title"><h2>🧴 رفّ العينات</h2><span class="eyebrow">اختر عينة</span></div>
-        <div class="samples" id="samples"></div>
-      </aside>
-      <section class="bench" aria-label="منطقة التجربة">
-        <div class="bench-head"><div><h2>منضدة التجارب</h2><p>أضف العينات إلى الكأس وشاهد ما يحدث</p></div><span class="status" id="labStatus">جاهز للتجربة</span></div>
-        <div class="stage" aria-label="كأس المختبر"><span class="sparkle s1">✦</span><span class="sparkle s2">✧</span><span class="sparkle s3">✦</span>
-          <div class="beaker-wrap"><div class="beaker-neck"></div><div class="beaker"><div class="measurement"><span>━━</span><span>━━</span><span>━━</span></div><div class="liquid" id="liquid"></div><span class="bubble"></span><span class="bubble b2"></span><span class="bubble b3"></span><div class="beaker-label" id="beakerLabel">كأس فارغ</div></div></div>
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">🧪</div>
+        <div class="title-wrap">
+          <h1>مختبر الكيمياء</h1>
+          <p>تعلّم باللعب • اكتشف التفاعلات الكيميائية</p>
         </div>
-        <div class="bench-controls"><button class="action secondary" id="clearBtn">↻ إفراغ الكأس</button><button class="action primary" id="mixBtn" disabled>✨ امزج العينات</button></div>
-        <div class="lab-message" id="message" aria-live="polite">اختر عينتين من الرف لبدء التجربة.</div>
-        <div class="bench-foot"><span>🧫 محاكاة تعليمية آمنة</span><div class="ph-box"><span>مؤشر اللون</span><div class="ph-track"><i class="ph-dot" id="phDot"></i></div></div></div>
+      </div>
+
+      <div class="stats" aria-label="إحصائيات اللاعب">
+        <div class="stat-pill"><span class="value" id="score">0</span>نقاط</div>
+        <div class="stat-pill"><span class="value" id="level">1</span>المستوى</div>
+        <div class="stat-pill"><span class="value" id="streak">0</span>سلسلة</div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="panel">
+        <div class="panel-section">
+          <div class="panel-header">
+            <h2>التحدي اليوم</h2>
+            <span class="chip">مهمة</span>
+          </div>
+
+          <div class="challenge-box">
+            <div class="kicker">LEVEL</div>
+            <h3 id="challengeTitle">اصنع الماء</h3>
+            <p id="challengeText">اختر عنصرين ثم اضغط على «مزج» للحصول على مركب جديد.</p>
+            <div class="progress-track" aria-label="تقدم المهمة">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+          </div>
+
+          <div class="panel-header">
+            <h2>العناصر المختبرية</h2>
+            <span class="chip">6</span>
+          </div>
+
+          <div class="element-grid" id="elementGrid"></div>
+        </div>
+      </aside>
+
+      <section class="lab-panel">
+        <div class="lab-top">
+          <h2>منضدة التجربة</h2>
+          <span class="status-tag" id="statusTag">جاهز</span>
+        </div>
+
+        <div class="stage" aria-label="منطقة مختبرية">
+          <span class="spark">✦</span>
+          <span class="spark">✧</span>
+          <span class="spark">✦</span>
+
+          <div class="beaker-wrap">
+            <div class="beaker-neck"></div>
+            <div class="beaker">
+              <div class="liquid" id="liquid"></div>
+              <span class="bubble"></span>
+              <span class="bubble"></span>
+              <span class="bubble"></span>
+              <div class="beaker-label" id="beakerLabel">كأس فارغ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-stack">
+          <button class="action secondary" id="clearBtn">إفراغ</button>
+          <button class="action primary" id="mixBtn" disabled>مزج</button>
+          <button class="action secondary" id="nextBtn">تحدي جديد</button>
+        </div>
+
+        <div class="lab-output">
+          <p class="message" id="labMessage"><strong>ابدأ:</strong> اختر عنصرين ثم اضغط على مزج.</p>
+        </div>
       </section>
-      <aside class="panel right" aria-label="دفتر الملاحظات"><div class="panel-title"><h2>📒 دفتر الملاحظات</h2><button class="reset-small" id="resetBtn">إعادة اللعبة</button></div><div class="log-list" id="log"><div class="empty-log">تجاربك ستظهر هنا…<br>ابدأ أول اكتشاف!</div></div><div class="hint"><b>💡 تلميح المستكشف</b><span id="hintText">كل عينة لها لون وخصائص مختلفة. جرّب تركيبات متنوعة!</span></div></aside>
+
+      <aside class="panel right-panel">
+        <div class="panel-section info-box">
+          <h3>معلومة سريعة</h3>
+          <div class="fact" id="factBox">
+            <strong>الماء:</strong> يتكوّن من هيدروجين وأكسجين، ويُعد من أهم المركبات في الطبيعة.
+          </div>
+        </div>
+
+        <div class="panel-section info-box">
+          <h3>اختبار سريع</h3>
+          <div class="fact">
+            <div id="quizPrompt">ما المركب الناتج عند مزج الهيدروجين مع الأكسجين؟</div>
+            <div class="quiz" id="quizOptions"></div>
+          </div>
+        </div>
+      </aside>
     </div>
   </main>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <script>
-    // لعبة محاكاة تعليمية؛ النتائج خيالية ومخصصة للتعلّم، وليست تعليمات لخلط مواد حقيقية.
-    const materials=[
-      {id:'water',name:'ماء صافٍ',desc:'عينة شفافة',icon:'💧',color:'#91d9f3',bg:'#e8f8ff',count:0},
-      {id:'red',name:'لون أحمر',desc:'صبغة لونية آمنة',icon:'🔴',color:'#ff718c',bg:'#fff0f3',count:0},
-      {id:'blue',name:'لون أزرق',desc:'صبغة لونية آمنة',icon:'🔵',color:'#5d91f5',bg:'#eef4ff',count:0},
-      {id:'yellow',name:'لون أصفر',desc:'صبغة لونية آمنة',icon:'🟡',color:'#ffc94f',bg:'#fff9e9',count:0},
-      {id:'bubbles',name:'مسحوق الفقاعات',desc:'مكوّن خيالي للمحاكاة',icon:'🫧',color:'#7ad9c0',bg:'#eafff7',count:0},
-      {id:'oil',name:'سائل ذهبي',desc:'نموذج مبسّط للزيت',icon:'🟠',color:'#f9ba63',bg:'#fff5e8',count:0},
-      {id:'salt',name:'بلورات بيضاء',desc:'عينة افتراضية',icon:'✨',color:'#c7d4df',bg:'#f3f7fa',count:0}
+    const elements = [
+      { id: 'H', name: 'هيدروجين', desc: 'غاز أخف من الهواء', symbol: 'H', color: '#7dd3fc', bg: '#e0f6ff' },
+      { id: 'O', name: 'أكسجين', desc: 'يدعم التنفس', symbol: 'O', color: '#7dd1ab', bg: '#e7fff5' },
+      { id: 'Na', name: 'صوديوم', desc: 'فلز شديد التفاعل', symbol: 'Na', color: '#ffd76a', bg: '#fff8df' },
+      { id: 'Cl', name: 'كلور', desc: 'غاز مهيج', symbol: 'Cl', color: '#a9c2ff', bg: '#edf1ff' },
+      { id: 'C', name: 'كربون', desc: 'أساس الحياة', symbol: 'C', color: '#8eb2ff', bg: '#eef3ff' },
+      { id: 'Cu', name: 'نحاس', desc: 'معدن موصل', symbol: 'Cu', color: '#f3a56d', bg: '#fff0e6' }
     ];
-    const missions=[
-      {title:'اصنع لوناً بنفسجياً',text:'اختر العينة الحمراء والزرقاء، ثم اضغط «امزج» لتكتشف لوناً جديداً.',test:s=>s.includes('red')&&s.includes('blue'),hint:'الأحمر مع الأزرق يصنعان البنفسجي في لوحة الألوان!'},
-      {title:'اصنع لوناً أخضر',text:'اجمع اللونين الأزرق والأصفر في كأسك.',test:s=>s.includes('blue')&&s.includes('yellow'),hint:'فكّر في ألوان قوس قزح: ماذا ينتج من الأزرق والأصفر؟'},
-      {title:'أطلق الفقاعات',text:'أضف الماء ومسحوق الفقاعات لتشاهد تفاعلاً افتراضياً ممتعاً.',test:s=>s.includes('water')&&s.includes('bubbles'),hint:'هذه الفقاعات جزء من المحاكاة فقط — لا تخلط مواداً حقيقية.'},
-      {title:'اكتشف طبقتين',text:'ضع الماء والسائل الذهبي معاً ولاحظ كيف ينفصلان في النموذج.',test:s=>s.includes('water')&&s.includes('oil'),hint:'بعض السوائل لا تمتزج، فتظهر في طبقات منفصلة.'},
-      {title:'جرّب لوناً برتقالياً',text:'امزج اللون الأحمر مع الأصفر في كأسك.',test:s=>s.includes('red')&&s.includes('yellow'),hint:'الأحمر والأصفر لونان أساسيان في مزج الأصباغ.'}
+
+    const challenges = [
+      {
+        title: 'اصنع الماء',
+        text: 'اختر عنصرين: الهيدروجين والأكسجين، ثم اضغط على مزج.',
+        target: ['H', 'O'],
+        result: 'H₂O',
+        fact: 'الماء: يتكوّن من هيدروجين وأكسجين، وهو مركب أساسي للحياة.',
+        quiz: {
+          prompt: 'ما المركب الناتج عند مزج الهيدروجين مع الأكسجين؟',
+          options: ['H₂O', 'NaCl', 'CO₂', 'HCl'],
+          answer: 'H₂O'
+        }
+      },
+      {
+        title: 'اصنع الملح',
+        text: 'اختر الصوديوم والكلور لتكوين ملح الطعام.',
+        target: ['Na', 'Cl'],
+        result: 'NaCl',
+        fact: 'ملح الطعام: يُعرف باسم كلوريد الصوديوم، ويستخدم في الطهي والحفظ.',
+        quiz: {
+          prompt: 'ما اسم المركب NaCl؟',
+          options: ['ملح الطعام', 'الماء', 'ثاني أكسيد الكربون', 'حمض الهيدروكلوريك'],
+          answer: 'ملح الطعام'
+        }
+      },
+      {
+        title: 'اصنع ثاني أكسيد الكربون',
+        text: 'اختر الكربون والأكسجين لإنتاج غاز CO₂.',
+        target: ['C', 'O'],
+        result: 'CO₂',
+        fact: 'CO₂: غاز تخرج أثناء التنفس والاحتراق، ويستخدم في بعض عمليات التخدير.',
+        quiz: {
+          prompt: 'أي مركب يُسمى ثاني أكسيد الكربون؟',
+          options: ['CO₂', 'H₂O', 'NaCl', 'CuO'],
+          answer: 'CO₂'
+        }
+      },
+      {
+        title: 'اصنع أكسيد النحاس',
+        text: ' استخدم النحاس والأكسجين لتكوين المركب CuO.',
+        target: ['Cu', 'O'],
+        result: 'CuO',
+        fact: 'أكسيد النحاس: يُستعمل في بعض الصناعات ويُظهر اللون الأسود أو البني.',
+        quiz: {
+          prompt: 'ما الاسم المختصر للمركب CuO؟',
+          options: ['أكسيد النحاس', 'ملح الطعام', 'الماء', 'هيدروجين'],
+          answer: 'أكسيد النحاس'
+        }
+      }
     ];
-    const outcomes={
-      'blue+red':{color:'#a487eb',name:'بنفسجي رائع',text:'🎉 أحسنت! الأحمر والأزرق كوّنا لوناً بنفسجياً في محاكاتنا.',ph:57},
-      'blue+yellow':{color:'#75c980',name:'أخضر منعش',text:'🌿 اكتشاف جميل! الأزرق والأصفر أعطيا لوناً أخضر.',ph:52},
-      'red+yellow':{color:'#ff9d55',name:'برتقالي مشرق',text:'🍊 رائع! مزج الأحمر والأصفر أنتج البرتقالي.',ph:54},
-      'bubbles+water':{color:'#92e8dd',name:'فقاعات مرحة',text:'🫧 ظهرت فقاعات في المحاكاة! تذكّر: هذه نتيجة افتراضية آمنة.',ph:50,bubbles:true},
-      'oil+water':{color:'#f8d68d',name:'طبقتان منفصلتان',text:'🔎 لاحظ الطبقتين: النموذج يوضح أن بعض السوائل لا تمتزج.',ph:50,layers:true},
-      'salt+water':{color:'#b6e5f1',name:'محلول افتراضي',text:'💧 اختفت البلورات في النموذج. هذا تمثيل مبسط للذوبان.',ph:50},
-      'blue+water':{color:'#72b4ee',name:'ماء أزرق',text:'💙 انتشر اللون الأزرق في الماء — جرب إضافة لون آخر!',ph:50},
-      'red+water':{color:'#f58da0',name:'ماء وردي',text:'🌸 انتشر اللون الأحمر في الماء — ما اللون التالي الذي ستجربه؟',ph:50},
-      'water+yellow':{color:'#f8dc7d',name:'ماء ذهبي',text:'🌟 أصبح الماء بلون أصفر مشرق!',ph:50}
-    };
-    const chosen=new Set();let score=0,missionIndex=0,doneMissions=new Set(),toastTimer;
-    const $=id=>document.getElementById(id);
-    function drawSamples(){ $('samples').innerHTML='';materials.forEach(m=>{const b=document.createElement('button');b.className='sample'+(chosen.has(m.id)?' selected':'');b.disabled=chosen.size>=3&&!chosen.has(m.id);b.setAttribute('aria-pressed',chosen.has(m.id));b.innerHTML=`<span class="sample-icon" style="background:${m.bg}">${m.icon}</span><span><span class="sample-name">${m.name}</span><span class="sample-desc">${m.desc}</span></span>${chosen.has(m.id)?'<span class="sample-count">في الكأس</span>':''}`;b.onclick=()=>toggle(m.id);$('samples').appendChild(b)})}
-    function toggle(id){if(chosen.has(id))chosen.delete(id);else if(chosen.size<3)chosen.add(id);$('mixBtn').disabled=chosen.size<2;updateLiquid();drawSamples();$('message').textContent=chosen.size?`أضفت ${chosen.size} من العينات. اختر عينة أخرى أو امزج!`:'اختر عينتين من الرف لبدء التجربة.'}
-    function updateLiquid(color){const liquid=$('liquid');liquid.style.height=chosen.size?Math.min(66,chosen.size*20)+'%':'0%';if(color)liquid.style.background=`linear-gradient(90deg,${color}cc,${color}88)`;else if(chosen.size)liquid.style.background='linear-gradient(90deg,#8eddd5bb,#66b6edbb)';$('beakerLabel').textContent=chosen.size?`${chosen.size} عينات`:'كأس فارغ'}
-    function mix(){if(chosen.size<2)return;const ids=[...chosen].sort(),key=ids.join('+');let result=outcomes[key];if(!result){const colors=ids.map(id=>materials.find(m=>m.id===id).color);result={color:colors[0],name:'تركيبة جديدة',text:'🧠 تركيبة جديدة! لاحظ اللون الناتج وجرّب مجموعة مختلفة.',ph:50}}
-      updateLiquid(result.color);$('beakerLabel').textContent=result.name;$('message').textContent=result.text;$('labStatus').textContent=result.bubbles?'فقاعات!':result.layers?'طبقتان':'تم المزج';$('phDot').style.right=(result.ph||50)+'%';if(result.bubbles)$('liquid').style.background='linear-gradient(90deg,#a9f5e9,#6fd9ce)';
-      addLog(result.name,result.text);const mission=missions[missionIndex];if(mission&&!doneMissions.has(missionIndex)&&mission.test(ids)){doneMissions.add(missionIndex);score+=10;$('score').textContent=score;$('progress').style.width='100%';showToast('🏆 أكملت التحدي! +10 نقاط');setTimeout(()=>{missionIndex=(missionIndex+1)%missions.length;setMission()},850)}else showToast('تم تسجيل التجربة في دفترك!');$('mixBtn').disabled=true;drawSamples()}
-    function addLog(title,text){const log=$('log');if(log.querySelector('.empty-log'))log.innerHTML='';const item=document.createElement('div');item.className='log-item';const safe=document.createElement('span');safe.textContent=text;item.innerHTML=`<b>${new Date().toLocaleTimeString('ar',{hour:'2-digit',minute:'2-digit'})} — ${title}</b><br>`;item.appendChild(safe);log.prepend(item)}
-    function setMission(){$('missionTitle').textContent=missions[missionIndex].title;$('missionText').textContent=missions[missionIndex].text;$('hintText').textContent=missions[missionIndex].hint;$('progress').style.width='0%'}
-    function showToast(text){const t=$('toast');t.textContent=text;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2100)}
-    function clear(){chosen.clear();$('mixBtn').disabled=true;$('labStatus').textContent='جاهز للتجربة';$('message').textContent='اختر عينتين من الرف لبدء التجربة.';$('phDot').style.right='50%';$('liquid').style.background='linear-gradient(90deg,#70d7d1b8,#52b7eeb5)';updateLiquid();drawSamples()}
-    function reset(){clear();score=0;missionIndex=0;doneMissions.clear();$('score').textContent='0';$('log').innerHTML='<div class="empty-log">تجاربك ستظهر هنا…<br>ابدأ أول اكتشاف!</div>';setMission();showToast('بدأنا من جديد — بالتوفيق!')}
-    $('mixBtn').addEventListener('click',mix);$('clearBtn').addEventListener('click',clear);$('resetBtn').addEventListener('click',reset);$('soundBtn').addEventListener('click',e=>{const off=e.currentTarget.textContent==='🔕';e.currentTarget.textContent=off?'🔔':'🔕';showToast(off?'الصوت مفعّل':'الصوت متوقف')});
-    drawSamples();setMission();
+
+    let selected = [];
+    let score = 0;
+    let streak = 0;
+    let level = 0;
+    let toastTimer = null;
+
+    const elementGrid = document.getElementById('elementGrid');
+    const liquid = document.getElementById('liquid');
+    const beakerLabel = document.getElementById('beakerLabel');
+    const labMessage = document.getElementById('labMessage');
+    const scoreBox = document.getElementById('score');
+    const levelBox = document.getElementById('level');
+    const streakBox = document.getElementById('streak');
+    const challengeTitle = document.getElementById('challengeTitle');
+    const challengeText = document.getElementById('challengeText');
+    const progressBar = document.getElementById('progressBar');
+    const factBox = document.getElementById('factBox');
+    const quizPrompt = document.getElementById('quizPrompt');
+    const quizOptions = document.getElementById('quizOptions');
+    const statusTag = document.getElementById('statusTag');
+    const mixBtn = document.getElementById('mixBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function renderElements() {
+      elementGrid.innerHTML = '';
+      elements.forEach((el) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'element-btn';
+        btn.dataset.id = el.id;
+        btn.innerHTML = `
+          <span class="element-symbol" style="background:${el.bg}; color:${el.color};">${el.symbol}</span>
+          <span class="element-name">${el.name}</span>
+          <span class="element-desc">${el.desc}</span>
+        `;
+
+        btn.addEventListener('click', () => toggleSelection(el.id));
+
+        if (selected.includes(el.id)) {
+          btn.classList.add('selected');
+        }
+
+        elementGrid.appendChild(btn);
+      });
+    }
+
+    function toggleSelection(id) {
+      if (selected.includes(id)) {
+        selected = selected.filter((item) => item !== id);
+      } else if (selected.length < 2) {
+        selected.push(id);
+      }
+
+      renderElements();
+      updateLabState();
+      mixBtn.disabled = selected.length < 2;
+      labMessage.innerHTML = selected.length
+        ? `<strong>العناصر المحددة:</strong> ${selected.join(' + ')}.`
+        : '<strong>ابدأ:</strong> اختر عنصرين ثم اضغط على مزج.';
+    }
+
+    function updateLabState() {
+      const total = selected.length;
+      liquid.style.height = total === 0 ? '0%' : `${Math.min(72, 26 + total * 22)}%`;
+      liquid.style.background = total === 0
+        ? 'linear-gradient(90deg, rgba(111,211,205,0.8), rgba(98,161,244,0.8))'
+        : 'linear-gradient(90deg, rgba(119,206,255,0.82), rgba(113,129,255,0.8))';
+
+      beakerLabel.textContent = total === 0 ? 'كأس فارغ' : `${selected.length} عنصرًا`;
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    function buildQuiz(challenge) {
+      quizPrompt.textContent = challenge.quiz.prompt;
+      quizOptions.innerHTML = '';
+
+      challenge.quiz.options.forEach((opt) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'quiz-btn';
+        btn.textContent = opt;
+        btn.addEventListener('click', () => {
+          const isCorrect = opt === challenge.quiz.answer;
+          btn.classList.add(isCorrect ? 'correct' : 'wrong');
+          if (isCorrect) {
+            showToast('إجابة صحيحة!');
+          } else {
+            showToast('حاول مرة أخرى!');
+          }
+        });
+        quizOptions.appendChild(btn);
+      });
+    }
+
+    function applyChallenge(index) {
+      const challenge = challenges[index];
+      challengeTitle.textContent = challenge.title;
+      challengeText.textContent = challenge.text;
+      factBox.innerHTML = `<strong>معلومة:</strong> ${challenge.fact}`;
+      buildQuiz(challenge);
+      progressBar.style.width = `${((index + 1) / challenges.length) * 100}%`;
+      statusTag.textContent = 'جاهز';
+      labMessage.innerHTML = '<strong>ابدأ:</strong> اختر عنصرين ثم اضغط على مزج.';
+      selected = [];
+      mixBtn.disabled = true;
+      renderElements();
+      updateLabState();
+    }
+
+    function evaluateMix() {
+      if (selected.length !== 2) {
+        showToast('اختر عنصرين فقط للخلط.');
+        return;
+      }
+
+      const target = [...challenges[level].target].sort().join('|');
+      const current = [...selected].sort().join('|');
+
+      if (current === target) {
+        score += 20 + streak * 5;
+        streak += 1;
+        scoreBox.textContent = score;
+        streakBox.textContent = streak;
+        liquid.style.background = 'linear-gradient(90deg, rgba(95,211,112,0.9), rgba(58,171,133,0.8))';
+        beakerLabel.textContent = challenges[level].result;
+        statusTag.textContent = 'نجاح';
+        labMessage.innerHTML = `<strong>نتيجة:</strong> ${challenges[level].result} تم تكوينه بنجاح.`;
+        showToast('نجاح! تم تكوين المركب الصحيح.');
+      } else {
+        score = Math.max(0, score - 5);
+        streak = 0;
+        scoreBox.textContent = score;
+        streakBox.textContent = streak;
+        liquid.style.background = 'linear-gradient(90deg, rgba(255,135,146,0.75), rgba(255,170,92,0.7))';
+        statusTag.textContent = 'إعادة';
+        labMessage.innerHTML = '<strong>خطأ:</strong> هذه الخلطة غير صحيحة. جرّب عناصر مختلفة.';
+        showToast('خلطة غير صحيحة، جرب مرة أخرى!');
+      }
+    }
+
+    function nextChallenge() {
+      level = (level + 1) % challenges.length;
+      levelBox.textContent = level + 1;
+      applyChallenge(level);
+    }
+
+    function clearLab() {
+      selected = [];
+      renderElements();
+      updateLabState();
+      mixBtn.disabled = true;
+      labMessage.innerHTML = '<strong>ابدأ:</strong> اختر عنصرين ثم اضغط على مزج.';
+      statusTag.textContent = 'جاهز';
+      liquid.style.background = 'linear-gradient(90deg, rgba(111,211,205,0.8), rgba(98,161,244,0.8))';
+      beakerLabel.textContent = 'كأس فارغ';
+    }
+
+    mixBtn.addEventListener('click', evaluateMix);
+    clearBtn.addEventListener('click', clearLab);
+    nextBtn.addEventListener('click', nextChallenge);
+
+    scoreBox.textContent = score;
+    levelBox.textContent = level + 1;
+    streakBox.textContent = streak;
+    applyChallenge(level);
   </script>
 </body>
 </html>
